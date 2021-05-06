@@ -12,7 +12,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
   taskForm: FormGroup;
   editMode = false;
   editTaskIndex: number;
-  editTask: string;
+  editTask: any[];
   startedEditing = new Subject<number>();
   subscription: Subscription;
   tasksObject = [];
@@ -36,7 +36,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onSubmit() {
+  onSubmit(): void {
     console.log(this.taskForm);
     if (this.editMode) {
       this.updateTask(this.editTaskIndex);
@@ -51,7 +51,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     this.taskForm.reset();
   }
 
-  addTask() {
+  addTask(): void {
     // this.tasks.push();
     this.tasksObject.push({
       task: this.taskForm.get('task').value,
@@ -60,25 +60,21 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateTask(index: number) {
-    console.log('update', this.tasksObject[index]['index']);
-    this.tasksObject[index]['task'] = this.taskForm.get('task').value;
+  updateTask(index: number): void {
+    console.log('update', this.tasksObject[index].index);
+    this.tasksObject[index].task = this.taskForm.get('task').value;
   }
 
-  onEditTask(index: number) {
+  onEditTask(index: number): void {
     this.startedEditing.next(index);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  getTask(index: number) {
+  getTask(index: number): any[] {
     console.log('getTask', this.tasksObject[index]);
-    return this.tasksObject[index]['task'];
+    return this.tasksObject[index].task;
   }
 
-  onDeleteTask() {
+  onDeleteTask(): void {
     this.taskForm.patchValue({
       task: '',
       deleted: true
@@ -87,9 +83,11 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
-  onDone(index: number) {
-    this.tasksObject[index]['done'] = !this.tasksObject[index]['done'];
+  onDone(index: number): void {
+    this.tasksObject[index].done = !this.tasksObject[index].done;
   }
 
-
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
