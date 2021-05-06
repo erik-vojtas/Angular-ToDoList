@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+# Angular-ToDoList
+self-study
+
 # ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
@@ -26,7 +28,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-=======
-# Angular-ToDoList
-self-study
->>>>>>> bd07241fa44046d23bbd489f550f3e01cfba1d59
+
