@@ -1,0 +1,12 @@
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.deleted {
+  display: none;
+}
+

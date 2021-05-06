@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="col-form-label" for="inputTask">Type your task...</label>
+      <input class="form-control" id="inputTask" formControlName="task">
+      <span *ngIf="!taskForm.get('task').valid && !taskForm.get('task').untouched" class="help-block">This field is required.</span>
+      <hr>
+      <button type="submit" class="btn btn-success" [disabled]="!taskForm.valid">{{ editMode ? 'Update Task' : 'Add Task'}}</button>
+      <button type="button" class="btn btn-danger" (click)="onDeleteTask()" [disabled]="!editMode">Delete Task</button>
+      <hr>
+    </div>
+    <div *ngFor="let task of tasksObject; let i = index" (click)="onEditTask(i)">
+        <p *ngIf="!task.deleted" [ngClass]="task.done ? 'done' : null">{{task.task}} <button id="done" class="btn btn-info" (click)="onDone(i)">{{!task.done ? 'Done' : 'Undone' }}</button></p>
+    </div>
+  </form>
+
+
+</div>
+
